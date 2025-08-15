@@ -1,0 +1,454 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* tweak these variables if you want the frame in red/orange instead of blue */
+:root {
+  --bg: #0a0a0a;
+  --frame-a: #0EA5FF; /* main neon stroke (blue by default) */
+  --frame-b: #7DE5FF; /* inner highlight */
+  --accent-a: #8B0000; /* your original theme accent */
+  --accent-b: #FF4500;
+  --container-max: 1200px;
+  --frame-top-offset: 8%; /* tweak to nudge frame up/down */
+  --frame-left-offset: 12%; /* tweak to nudge frame left/right */
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; }
+.two-wheeler-services {
+  background: var(--bg);
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  padding: 56px 20px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* main layout: left visual + right points */
+.service-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+/* ---------- LEFT VISUAL ---------- */
+.left-visual {
+  position: relative;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* inline SVG frame */
+.neon-frame-svg {
+  position: absolute;
+  left: var(--frame-left-offset);
+  top: var(--frame-top-offset);
+  width: 52%;            /* how wide the L frame is relative to left column */
+  height: 56%;           /* height of the L frame */
+  z-index: 1;
+  transform:scale(2);
+  pointer-events: none;
+}
+
+/* the framed text box sits inside the L frame (adjust left/top/width to fit) */
+.frame-text-box {
+  position: absolute;
+  left: calc(var(--frame-left-offset) + 6%); /* relative to left-visual */
+  top: calc(var(--frame-top-offset) + 5%);
+  width: 46%;
+  background: rgba(0, 0, 0, 0.72);
+  border-radius: 8px;
+  padding: 20px 18px;
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(14,165,255,0.06);
+  text-align: left;
+}
+
+/* framed heading + subtext */
+.service-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.frame-heading {
+  margin: 6px 0 6px;
+  font-size: 1.6rem;
+  line-height: 1.06;
+  color: #000000;
+  font-weight: 700;
+}
+
+.frame-subtext {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.86);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+/* bike image sits visually under and overlapping the frame */
+.bike-image-in-frame {
+  width: 100%;
+  max-width: 620px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  transform: translateY(8%);
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,0.6));
+}
+
+/* glow under bike */
+.bike-glow {
+  position: absolute;
+  bottom: 8%;
+  left: 22%;
+  width: 300px;
+  height: 90px;
+  background: radial-gradient(circle, rgba(14,165,255,0.12) 0%, transparent 60%);
+  filter: blur(18px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---------- RIGHT CHECKPOINTS (list) ---------- */
+.points-right {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.point-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  max-width: 540px;
+}
+
+.point-square {
+  min-width: 48px;
+  min-height: 48px;
+  background: linear-gradient(180deg, var(--accent-a), var(--accent-b));
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000 !important;
+  box-shadow: 0 8px 22px rgba(139,0,0,0.14);
+  flex-shrink: 0;
+}
+
+.point-text h4 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #000 !important;
+}
+
+.point-text p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.86) !important;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* ---------- STATS (kept theme) ---------- */
+.service-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 28px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  background: rgba(30,30,30,0.75);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.stat-icon { font-size: 1.4rem; color: var(--accent-b); margin-bottom: 8px; }
+.stat-value {
+  font-size: 1.9rem; font-weight: 700; margin-bottom: 6px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.stat-label { font-size: 0.95rem; color: rgba(255,255,255,0.86); }
+
+/* CTA */
+.service-cta-wrapper { text-align:center; margin-top: 6px; }
+.service-cta {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(139,0,0,0.14);
+}
+
+/* ---------- RESPONSIVE TWEAKS ---------- */
+@media (max-width: 1024px) {
+  .service-display { grid-template-columns: 1fr; gap: 22px; }
+  .neon-frame-svg { left: 6%; top: 9%; width: 62%; height: 48%; }
+  .frame-text-box { left: calc(6% + 3%); top: calc(9% + 4%); width: 66%; padding: 16px; }
+  .bike-image-in-frame { max-width: 520px; transform: translateY(12%); }
+  .service-stats { grid-template-columns: 1fr; }
+  .points-right { align-items: center; }
+  .point-row { justify-content: center; text-align: center; flex-direction: column; gap: 8px; }
+  .point-square { margin-bottom: 6px; }
+}
+
+@media (max-width: 576px) {
+  :root { --frame-left-offset: 6%; --frame-top-offset: 6%; }
+  .neon-frame-svg { width: 78%; height: 28%; left: 4%; top: 6%; }
+  .frame-text-box { left: 6%; top: 6%; width: 86%; padding: 12px; text-align: center; }
+  .frame-heading { font-size: 1.25rem; }
+  .frame-subtext { font-size: 0.95rem; }
+  .bike-image-in-frame { max-width: 360px; transform: translateY(6%); }
+  .point-row { text-align: left; flex-direction: row; gap: 12px; align-items: flex-start; }
+  .points-right { align-items: flex-start; }
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* tweak these variables if you want the frame in red/orange instead of blue */
+:root {
+  --bg: #0a0a0a;
+  --frame-a: #0EA5FF; /* main neon stroke (blue by default) */
+  --frame-b: #7DE5FF; /* inner highlight */
+  --accent-a: #8B0000; /* your original theme accent */
+  --accent-b: #FF4500;
+  --container-max: 1200px;
+  --frame-top-offset: 8%; /* tweak to nudge frame up/down */
+  --frame-left-offset: 12%; /* tweak to nudge frame left/right */
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; }
+.two-wheeler-services {
+  background: var(--bg);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  padding: 56px 20px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* main layout: left visual + right points */
+.service-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+/* ---------- LEFT VISUAL ---------- */
+.left-visual {
+  position: relative;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* inline SVG frame */
+.neon-frame-svg {
+  position: absolute;
+  left: var(--frame-left-offset);
+  top: var(--frame-top-offset);
+  width: 52%;            /* how wide the L frame is relative to left column */
+  height: 56%;           /* height of the L frame */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* the framed text box sits inside the L frame (adjust left/top/width to fit) */
+.frame-text-box {
+  position: absolute;
+  left: calc(var(--frame-left-offset) + 6%); /* relative to left-visual */
+  top: calc(var(--frame-top-offset) + 5%);
+  width: 46%;
+  background: rgba(0, 0, 0, 0.72);
+  border-radius: 8px;
+  padding: 20px 18px;
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(14,165,255,0.06);
+  text-align: left;
+}
+
+/* framed heading + subtext */
+.service-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.frame-heading {
+  margin: 6px 0 6px;
+  font-size: 1.6rem;
+  line-height: 1.06;
+  color: #fff;
+  font-weight: 700;
+}
+
+.frame-subtext {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+/* bike image sits visually under and overlapping the frame */
+.bike-image-in-frame {
+  width: 100%;
+  max-width: 620px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  transform: translateY(8%);
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,0.6));
+}
+
+/* glow under bike */
+.bike-glow {
+  position: absolute;
+  bottom: 8%;
+  left: 22%;
+  width: 300px;
+  height: 90px;
+  background: radial-gradient(circle, rgba(14,165,255,0.12) 0%, transparent 60%);
+  filter: blur(18px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---------- RIGHT CHECKPOINTS (list) ---------- */
+.points-right {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.point-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  max-width: 540px;
+}
+
+.point-square {
+  min-width: 48px;
+  min-height: 48px;
+  background: linear-gradient(180deg, var(--accent-a), var(--accent-b));
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(139,0,0,0.14);
+  flex-shrink: 0;
+}
+
+.point-text h4 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.point-text p {
+  margin: 0;
+  color: rgba(255,255,255,0.86);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* ---------- STATS (kept theme) ---------- */
+.service-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 28px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  background: rgba(30,30,30,0.75);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.stat-icon { font-size: 1.4rem; color: var(--accent-b); margin-bottom: 8px; }
+.stat-value {
+  font-size: 1.9rem; font-weight: 700; margin-bottom: 6px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.stat-label { font-size: 0.95rem; color: rgba(255,255,255,0.86); }
+
+/* CTA */
+.service-cta-wrapper { text-align:center; margin-top: 6px; }
+.service-cta {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(139,0,0,0.14);
+}
+
+/* ---------- RESPONSIVE TWEAKS ---------- */
+@media (max-width: 1024px) {
+  .service-display { grid-template-columns: 1fr; gap: 22px; }
+  .neon-frame-svg { left: 6%; top: 9%; width: 62%; height: 48%; }
+  .frame-text-box { left: calc(6% + 3%); top: calc(9% + 4%); width: 66%; padding: 16px; }
+  .bike-image-in-frame { max-width: 520px; transform: translateY(12%); }
+  .service-stats { grid-template-columns: 1fr; }
+  .points-right { align-items: center; }
+  .point-row { justify-content: center; text-align: center; flex-direction: column; gap: 8px; }
+  .point-square { margin-bottom: 6px; }
+}
+
+@media (max-width: 576px) {
+  :root { --frame-left-offset: 6%; --frame-top-offset: 6%; }
+  .neon-frame-svg { width: 78%; height: 28%; left: 4%; top: 6%; }
+  .frame-text-box { left: 6%; top: 6%; width: 86%; padding: 12px; text-align: center; }
+  .frame-heading { font-size: 1.25rem; }
+  .frame-subtext { font-size: 0.95rem; }
+  .bike-image-in-frame { max-width: 360px; transform: translateY(6%); }
+  .point-row { text-align: left; flex-direction: row; gap: 12px; align-items: flex-start; }
+  .points-right { align-items: flex-start; }
+}

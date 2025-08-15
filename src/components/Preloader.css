@@ -1,0 +1,199 @@
+/* Preloader.css */
+.military-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Agency FB', 'Arial Narrow', sans-serif;
+}
+
+.tactical-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle, rgba(15,15,15,0.8) 0%, rgba(5,5,5,0.9) 100%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(30,30,30,0.2),
+      rgba(30,30,30,0.2) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+}
+
+.armored-loader {
+  width: 320px;
+  padding: 30px;
+  background: rgba(10,10,10,0.7);
+  border: 1px solid #333;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  border-radius: 2px;
+}
+
+.hummer-badge {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.badge-svg {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 0 5px rgba(200,50,0,0.5));
+}
+
+.badge-shape {
+  fill: #111;
+  stroke: #8B0000;
+  stroke-width: 2;
+}
+
+.badge-text {
+  fill: #ddd;
+  font-size: 14px;
+  font-weight: bold;
+  text-anchor: middle;
+  letter-spacing: 1px;
+}
+
+.gauge-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.rpm-gauge {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: relative;
+  background: #0a0a0a;
+}
+
+.gauge-markings {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  background: 
+    conic-gradient(
+      #111 0deg 90deg,
+      #222 90deg 180deg,
+      #111 180deg 270deg,
+      #222 270deg 360deg
+    );
+  border-radius: 50%;
+}
+
+.gauge-needle {
+  position: absolute;
+  width: 2px;
+  height: 30px;
+  background: #8B0000;
+  top: 5px;
+  left: 50%;
+  transform-origin: bottom center;
+  box-shadow: 0 0 5px #FF4500;
+}
+
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-led {
+  width: 12px;
+  height: 12px;
+  background: #8B0000;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #FF4500;
+  animation: ledPulse 1.5s infinite alternate;
+}
+
+@keyframes ledPulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.loading-indicator span {
+  color: #ddd;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.armored-progress {
+  height: 8px;
+  background: #111;
+  border: 1px solid #333;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #8B0000, #FF4500);
+  transform-origin: left center;
+}
+
+.progress-ticks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent 9px,
+      rgba(255,255,255,0.1) 9px,
+      rgba(255,255,255,0.1) 10px
+    );
+}
+
+.technical-readout {
+  font-size: 11px;
+  color: #ddd;
+}
+
+.readout-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.readout-line span:last-child {
+  color: #FF4500;
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .armored-loader {
+    width: 280px;
+    padding: 20px;
+  }
+  
+  .badge-svg {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .technical-readout {
+    font-size: 10px;
+  }
+}
