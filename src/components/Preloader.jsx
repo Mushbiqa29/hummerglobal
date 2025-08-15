@@ -2,104 +2,68 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './Preloader.css';
 
-const Preloader = () => {
-  // Military-grade loading animations
-  const dashGaugeVariants = {
-    loading: {
-      rotate: [0, 180, 360],
+const HummerPreloader = () => {
+  const loaderVariants = {
+    animate: {
+      rotate: 360,
       transition: {
-        duration: 3,
+        duration: 1.5,
         ease: "linear",
         repeat: Infinity
       }
     }
   };
 
-  const progressBarVariants = {
-    loading: {
-      scaleX: [0, 1],
+  const pulseVariants = {
+    animate: {
+      scale: [1, 1.1, 1],
+      opacity: [0.8, 1, 0.8],
       transition: {
-        duration: 3,
-        ease: "linear"
-      }
-    }
-  };
-
-  const hummerLogoVariants = {
-    pulse: {
-      scale: [1, 1.03, 1],
-      opacity: [0.9, 1, 0.9],
-      transition: {
-        duration: 2,
+        duration: 1.5,
         repeat: Infinity
       }
     }
   };
 
   return (
-    <div className="military-preloader">
-      {/* Tactical background */}
-      <div className="tactical-overlay"></div>
-      
-      {/* Main container */}
-      <div className="armored-loader">
-        {/* Hummer badge */}
+    <div className="hummer-preloader-container">
+      <div className="hummer-preloader-content">
+        {/* Animated ring */}
         <motion.div 
-          className="hummer-badge"
-          variants={hummerLogoVariants}
-          animate="pulse"
+          className="hummer-loader-ring"
+          variants={loaderVariants}
+          animate="animate"
         >
-          <svg viewBox="0 0 100 100" className="badge-svg">
-            <path d="M20,70 L30,50 L50,30 L70,50 L80,70 Z" className="badge-shape"/>
-            <text x="50" y="60" className="badge-text">HUMMER</text>
+          <div className="hummer-ring-track"></div>
+          <div className="hummer-ring-progress"></div>
+        </motion.div>
+        
+        {/* Centered logo with subtle pulse */}
+        <motion.div 
+          className="hummer-logo-center"
+          variants={pulseVariants}
+          animate="animate"
+        >
+          <svg viewBox="0 0 100 100" className="hummer-logo-svg">
+            <path 
+              d="M50 20 L80 50 L65 65 L50 50 L35 65 L20 50 Z" 
+              className="hummer-logo-path"
+            />
           </svg>
         </motion.div>
-
-        {/* Dashboard gauge cluster */}
-        <div className="gauge-cluster">
-          <motion.div 
-            className="rpm-gauge"
-            variants={dashGaugeVariants}
-            animate="loading"
-          >
-            <div className="gauge-markings"></div>
-            <div className="gauge-needle"></div>
-          </motion.div>
-          
-          <div className="loading-indicator">
-            <div className="status-led"></div>
-            <span>SYSTEM INIT</span>
-          </div>
-        </div>
-
-        {/* Military spec progress bar */}
-        <div className="armored-progress">
-          <motion.div 
-            className="progress-bar"
-            variants={progressBarVariants}
-            animate="loading"
-          ></motion.div>
-          <div className="progress-ticks"></div>
-        </div>
-
-        {/* Technical readout */}
-        <div className="technical-readout">
-          <div className="readout-line">
-            <span>VEHICLE SYSTEMS:</span>
-            <span>CHECKING...</span>
-          </div>
-          <div className="readout-line">
-            <span>ENGINE DIAG:</span>
-            <span>PASS</span>
-          </div>
-          <div className="readout-line">
-            <span>NAVIGATION:</span>
-            <span>CALIBRATING</span>
-          </div>
+        
+        {/* Loading text */}
+        <div className="hummer-loading-text">
+          <span>H</span>
+          <span>U</span>
+          <span>M</span>
+          <span>M</span>
+          <span>E</span>
+          <span>R</span>
         </div>
       </div>
     </div>
   );
 };
 
-export default Preloader;
+export default HummerPreloader;

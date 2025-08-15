@@ -80,17 +80,7 @@ const TwoWheelerServices = () => {
           </div>
         </div>
 
-        {/* STATS (kept style) */}
-        <div className="service-stats">
-          {stats.map((st, idx) => (
-            <div className="stat-card" key={idx}>
-              <div className="stat-icon">{st.icon}</div>
-              <div className="stat-value">{st.value}</div>
-              <div className="stat-label">{st.label}</div>
-            </div>
-          ))}
-        </div>
-
+    
         {/* CTA */}
         <div className="service-cta-wrapper">
           <button className="service-cta">
