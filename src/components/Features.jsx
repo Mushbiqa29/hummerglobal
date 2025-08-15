@@ -8,7 +8,7 @@ import {
   FiCheckCircle,
 } from "react-icons/fi";
 import BikeImage from "../assets/bikeframe.png"; // keep your path
-import "./features.css";
+import "./Features.css";
 
 const TwoWheelerServices = () => {
   const services = [
