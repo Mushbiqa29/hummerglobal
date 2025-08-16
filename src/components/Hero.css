@@ -1,3 +1,35 @@
+/* Add these new styles to your existing CSS */
+
+.main-text {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-text span {
+  display: inline-block;
+  transition: all 0.5s ease;
+}
+
+.text-animate span {
+  animation: textReveal 0.8s ease-out forwards;
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Existing styles remain the same */
 .hero-section {
   position: relative;
   width: 100%;
@@ -7,76 +39,31 @@
   align-items: center;
   padding: 0 5%;
   box-sizing: border-box;
+  background-color: #fff;
 }
 
-/* Video Background */
-.video-background {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.video-background img {
-  width: 100%;
-  height: 100%;
-  position:relative;
-  right:70px !important;
-}
-
-/* Particle Canvas */
-.text-effect {
-  position: absolute;
-  top: 9%;
-  left: 40px;
-  width: 50%;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Text Content */
 .hero-content {
   position: relative;
   width: 50%;
   z-index: 3;
-  text-align: left;
 }
 
 .text-container {
-  max-width: 600px;
-  color: rgb(0, 0, 0);
-}
-
-.main-text {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  color: rgb(44, 31, 31) !important;
-}
-
-.main-text span.highlight {
-  color: #8B0000; /* Maroon red */
-  text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
+  max-width: 500px;
 }
 
 .subtext {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 1rem;
   line-height: 1.6;
-  opacity: 0.9;
+  color: #333;
+  margin-bottom: 2rem;
   position: relative;
-  top:100px;
+  top: 20px;
 }
 
-/* CTA Button */
 .cta-button {
   padding: 12px 30px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   background: #8B0000;
   color: white;
@@ -85,63 +72,62 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
-  position:relative;
-  top:100px;
-
+  position: relative;
+  top: 20px;
 }
 
 .cta-button:hover {
-  background: linear-gradient(45deg, #8B0000, #B22222);
+  background: #B22222;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(139, 0, 0, 0.6);
 }
 
-/* Animation Classes */
-.animate-fade {
-  animation: fadeInOut 1s ease-in-out;
+.video-background {
+  position: absolute;
+  top: 0;
+  right: 200px;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  transform: scale(1.8);
 }
 
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+.video-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  right: 40px;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .hero-section {
     flex-direction: column;
     padding: 20px;
+    height: auto;
+    min-height: 100vh;
   }
-  .text-effect
-  {
-    top:-20% !important;
-    left:-10% !important;
-    width: 100vw !important;
-    transform: scale(0.3);
- overflow: visible !important;
+
+  .hero-content {
+    width: 100%;
+    margin-top: 2rem;
   }
+
   .video-background {
     position: relative;
     width: 100%;
     height: 40%;
-    right:5%;
-    top:30%;
+    right: 0;
+    top:30px;
   }
-  
-  .hero-content {
-    width: 100%;
-    margin-top: 2rem;
-    position: relative;
-    top:15%;
+
+  .video-background img {
+    top:50px;
+    right: 100px;
+
   }
-  
+
   .main-text {
     font-size: 2rem;
-    position: relative;
- 
-  }
- 
-  .subtext {
-    font-size: 1rem;
   }
 }
