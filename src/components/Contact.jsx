@@ -16,7 +16,7 @@ const Contact = () => {
           setTimeout(() => {
             setFormLoaded(true);
             removeVismeBadge();
-          }, 1000);
+          }, 100);
         };
         document.body.appendChild(script);
       }

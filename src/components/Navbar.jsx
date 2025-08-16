@@ -27,7 +27,7 @@ const Navbar = () => {
     { name: 'Home', path: '/#home' },
     { name: 'About', path: '/#about' },
     { name: 'Services', path: '/#hummer-services' },
-    { name: 'Gallery', path: './VideoGallery.jsx' },
+    { name: 'Gallery', path: '/VideoGallery.jsx' },
     { name: 'Contact', path: '/#contact' }
   ];
 
