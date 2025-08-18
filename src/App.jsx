@@ -21,7 +21,7 @@ import VideoGallery from './components/VideoGallery';
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-function App() {
+function Home() {
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
 
@@ -31,7 +31,6 @@ function App() {
       document.body.style.overflow = 'auto';
     }, 4000);
 
-    // Handle scroll for zoom effect
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
@@ -48,7 +47,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <>
       <AnimatePresence>
         {loading ? (
           <Preloader />
@@ -62,19 +61,12 @@ function App() {
               <Navbar />
               
               <main>
-                <Routes>
-                  <Route path="/" element={
-                    <>
-                      <Hero />
-                      <About />
-                      <Features />
-                      <Services />
-                      <Testimonials />
-                      <Contact />
-                    </>
-                  } />
-                  <Route path="/videoGallery.jsx" element={<VideoGallery />} />
-                </Routes>
+                <Hero />
+                <About />
+                <Features />
+                <Services />
+                <Testimonials />
+                <Contact />
               </main>
               
               <Footer />
@@ -82,6 +74,27 @@ function App() {
           </div>
         )}
       </AnimatePresence>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/video" element={
+          <div className="App">
+            <div className="content-container">
+              <Navbar />
+              <main>
+                <VideoGallery />
+              </main>
+              <Footer />
+            </div>
+          </div>
+        } />
+      </Routes>
     </Router>
   );
 }
