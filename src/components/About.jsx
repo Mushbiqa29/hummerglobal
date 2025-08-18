@@ -8,27 +8,12 @@ import { FiBattery, FiZap, FiActivity, FiAward, FiUsers, FiTool } from 'react-ic
 
 const About = () => {
   const [counts, setCounts] = useState([0, 0, 0, 0, 0, 0]);
-  const [scrolled, setScrolled] = useState(false);
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: false });
   const { scrollYProgress } = useScroll();
   
   // Parallax effects
-  const yPos = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const yPos = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [1, 0.95, 0.95, 1]);
-
-  // Handle scroll for zoom effect
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Counting animation
   useEffect(() => {
@@ -104,14 +89,9 @@ const About = () => {
   ];
 
   return (
-    <section className={`about-section ${scrolled ? 'scrolled' : ''}`} id="about" ref={ref}>
-      {/* Fixed Background */}
-      <div className="fixed-background">
-        <div className="background-overlay"></div>
-      </div>
-
+    <section className="about-section" id="about" ref={ref}>
       <div className="container">
-        {/* Feature Cards Grid - Now placed above content */}
+        {/* Feature Cards Grid */}
         <div className="feature-cards-container">
           <motion.div 
             className="feature-cards-grid"

@@ -132,13 +132,7 @@ const HummerServices = () => {
         ))}
       </div>
       
-      {/* Scanning line effect */}
-      <motion.div 
-        className="scanning-line"
-        initial={{ y: -100 }}
-        animate={inView ? { y: '100vh' } : {}}
-        transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-      />
+     
 
       <div className="hummer-services-container">
         <motion.div

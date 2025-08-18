@@ -169,24 +169,7 @@ const HummerFooter = () => {
         </div>
       </motion.div>
 
-      {/* WhatsApp Float Button */}
-      <motion.a
-        href="https://wa.me/9344850430"
-        className="hummer-footer__whatsapp"
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ 
-          scale: 1.1,
-          boxShadow: '0 5px 15px rgba(37, 211, 102, 0.4)'
-        }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <svg viewBox="0 0 32 32" className="hummer-footer__whatsapp-icon">
-          <path d="M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0zm4.938 9.046c-1.128-.614-2.583-.675-3.919-.118-1.342.56-2.175 1.617-2.381 2.81-.156.902.056 1.807.538 2.528-1.118 1.838-1.537 1.756-1.844 3.381-.194 1.025.6 1.825 1.625 1.631 1.634-.306 1.544-.725 3.381-1.844.721.481 1.626.694 2.528.538 1.193-.206 2.25-1.038 2.81-2.381.559-1.335.497-2.791-.118-3.919-.606-1.113-1.769-1.775-3.022-1.606zM16 8a8 8 0 0 1 7.938 7H23v1a7 7 0 0 0-7 7h-1a8 8 0 0 1-8-8 8 8 0 0 1 8-8zm0 3a5 5 0 0 1 5 5h-1a4 4 0 0 0-4-4v-1z"/>
-        </svg>
-      </motion.a>
+     
     </footer>
   );
 };

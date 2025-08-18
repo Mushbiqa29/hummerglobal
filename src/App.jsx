@@ -23,6 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,7 +31,20 @@ function App() {
       document.body.style.overflow = 'auto';
     }, 4000);
 
-    return () => clearTimeout(timer);
+    // Handle scroll for zoom effect
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -39,26 +53,32 @@ function App() {
         {loading ? (
           <Preloader />
         ) : (
-          <div className="App">
-            <Navbar />
+          <div className={`App ${scrolled ? 'scrolled' : ''}`}>
+            {/* Fixed Zooming Background */}
+            <div className="site-background"></div>
             
-            <main>
-              <Routes>
-                <Route path="/" element={
-                  <>
-                    <Hero />
-                    <About />
-                    <Features />
-                    <Services />
-                    <Testimonials />
-                    <Contact />
-                  </>
-                } />
-                <Route path="/videoGallery.jsx" element={<VideoGallery />} />
-              </Routes>
-            </main>
-            
-            <Footer />
+            {/* Content Container */}
+            <div className="content-container">
+              <Navbar />
+              
+              <main>
+                <Routes>
+                  <Route path="/" element={
+                    <>
+                      <Hero />
+                      <About />
+                      <Features />
+                      <Services />
+                      <Testimonials />
+                      <Contact />
+                    </>
+                  } />
+                  <Route path="/videoGallery.jsx" element={<VideoGallery />} />
+                </Routes>
+              </main>
+              
+              <Footer />
+            </div>
           </div>
         )}
       </AnimatePresence>

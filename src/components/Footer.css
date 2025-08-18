@@ -294,7 +294,7 @@
     grid-template-columns: 1fr 1fr;
   }
 }
-
+/* Updated Mobile Responsive Styles */
 @media (max-width: 768px) {
   .hummer-footer__main {
     padding: 3rem 0;
@@ -302,17 +302,16 @@
   
   .hummer-footer__container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    text-align: center;
   }
   
   .hummer-footer__brand {
     align-items: center;
-    text-align: center;
   }
   
   .hummer-footer__links {
     align-items: center;
-
   }
   
   .hummer-footer__links-title::after {
@@ -320,18 +319,112 @@
     transform: translateX(-50%);
   }
   
+  /* Improved Contact Section */
   .hummer-footer__contact {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
+  }
+  
+  .hummer-footer__contact-list {
+    align-items: center;
+    max-width: 300px;
+    margin: 0 auto;
   }
   
   .hummer-footer__contact-list li {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    width: 100%;
   }
   
-  .hummer-footer__legal {
+  .hummer-footer__contact-icon {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hummer-footer__contact-list div {
+    display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+  
+  /* Better link spacing */
+  .hummer-footer__links-list {
+    align-items: center;
+  }
+  
+  /* Legal links in column */
+  .hummer-footer__legal {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .hummer-footer__container {
+    padding: 0 1.5rem;
+  }
+  
+  .hummer-footer__contact-list {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .hummer-footer__contact-list li {
+    padding: 0.5rem 0;
+  }
+  
+  .hummer-footer__whatsapp {
+    width: 50px;
+    height: 50px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .hummer-footer__whatsapp-icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  /* Better text sizing for small devices */
+  .hummer-footer__description,
+  .hummer-footer__link,
+  .hummer-footer__contact-list span {
+    font-size: 0.9rem;
+  }
+  
+  .hummer-footer__links-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Improved link hover effects for mobile */
+@media (hover: hover) {
+  .hummer-footer__link:hover {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+  }
+  
+  .hummer-footer__link:hover .hummer-footer__link-arrow {
+    opacity: 1;
+  }
+  
+  .hummer-footer__social-link:hover {
+    color: #FF4500;
+    border-color: rgba(255, 69, 0, 0.5);
+  }
+  
+  .hummer-footer__contact-list a:hover {
+    color: #FF4500;
+    text-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+  }
+  
+  .hummer-footer__legal a:hover {
+    color: #FF4500;
   }
 }
 

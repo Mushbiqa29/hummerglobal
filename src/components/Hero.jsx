@@ -1,62 +1,82 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import heroVideo from '../assets/hummer.gif';
 
-const Hero = () => {
-  const [currentText, setCurrentText] = useState(0);
-  const [animate, setAnimate] = useState(false);
+// Import images directly
+import card1 from '../assets/card1.avif';
+import card2 from '../assets/card2.avif';
+import card3 from '../assets/card3.avif';
+import card4 from '../assets/card4.avif';
+import card5 from '../assets/card5.webp';
 
-  const textContent = [
-    {
-      main: [
-        { text: "The", color: "#000000" },
-        { text: " ULTIMATE ", color: "#B22222" },
-        { text: "Power Charging Solution", color: "#000000" }
-      ],
-      sub: "Stay charged on-the-go with our Road Warrior Car Power Bank! This powerful 20,000MAH battery pack is designed to keep your devices charged while driving, camping, or on any adventure."
+const ExpandingCards = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  
+  const herocards = [
+    { 
+      image: card1, 
+      title: 'Premium Hummer Fleet', 
+      cta: 'Experience luxury with our top-tier Hummer vehicles', 
+      color: '#8B0000' // Dark Red
     },
-    {
-      main: [
-        { text: "Discover the Power of", color: "#000000" },
-        { text: " Ingenious ", color: "#B22222" },
-        { text: "Design", color: "#000000" }
-      ],
-      sub: "Expert care for your two-wheeler, regardless of brand. Our skilled technicians provide top-notch service and repairs. Trust us to get you back on the road, quickly and safely."
+    { 
+      image: card2, 
+      title: 'Weekend Getaways', 
+      cta: 'Book your perfect weekend adventure vehicle', 
+      color: '#A52A2A' // Brown-Red
+    },
+    { 
+      image: card3, 
+      title: 'Corporate Rentals', 
+      cta: 'Impress your clients with our executive vehicles', 
+      color: '#A52A2A' // Burgundy
+    },
+    { 
+      image: card4, 
+      title: 'Off-Road Adventures', 
+      cta: 'Conquer any terrain with our 4x4 Hummers', 
+      color: '#A52A2A' // Wine
+    },
+    { 
+      image: card5, 
+      title: 'Long-Term Leasing', 
+      cta: 'Special rates for extended rentals', 
+      color: '#7C0A02' // Blood Red
     }
   ];
 
-  // Text animation effect
+  // Auto-rotate cards every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentText(prev => (prev + 1) % textContent.length);
-      setAnimate(true);
-      setTimeout(() => setAnimate(false), 1000);
-    }, 5000);
-
+      setActiveIndex((prevIndex) => (prevIndex + 1) % herocards.length);
+    }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [herocards.length]);
 
   return (
     <section className="hero-section">
-      <div className="hero-content">
-        <div className="text-container">
-          <h1 className={`main-text ${animate ? 'text-animate' : ''}`}>
-            {textContent[currentText].main.map((part, i) => (
-              <span key={i} style={{ color: part.color }}>
-                {part.text}
-              </span>
-            ))}
-          </h1>
-          <p className="subtext">{textContent[currentText].sub}</p>
-          <button className="cta-button">Explore Products</button>
-        </div>
-      </div>
-
-      <div className="video-background">
-        <img src={heroVideo} alt="Product demonstration" />
+      <div className="hero-cards-container">
+        {herocards.map((card, index) => (
+          <div
+            key={index}
+            className={`hero-card ${index === activeIndex ? 'active' : ''}`}
+            style={{ 
+              backgroundImage: `url(${card.image})`,
+              '--accent-color': card.color
+            }}
+            onClick={() => setActiveIndex(index)}
+          >
+            <div className="hero-card-content">
+              <h1>{card.title}</h1>
+              <div className="hero-card-cta">
+                <p>{card.cta}</p>
+                <button className="connect-button">Book Now</button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
-  );
+  ); 
 };
 
-export default Hero;
+export default ExpandingCards;

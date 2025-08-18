@@ -69,6 +69,7 @@
   align-items: center;
   z-index: 2;
   transition: all 0.3s ease;
+  display: none;
 }
 
 .hummer-play-btn::after {
@@ -79,6 +80,7 @@
   border-left: 35px solid white;
   border-bottom: 20px solid transparent;
   margin-left: 5px;
+  display: flex;
 }
 
 .hummer-hero-content {
@@ -116,6 +118,7 @@
   width: 24px;
   height: 24px;
   fill: white;
+  display: none;
 }
 
 .hummer-video-info {

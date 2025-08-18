@@ -8,10 +8,11 @@
   color: white;
   isolation: isolate;
   font-family: 'Poppins', sans-serif;
+  background: transparent;
 }
 .section-title{
   color: black;
-text-align: left !important;
+  text-align: left !important;
 }
 .section-description{
   color: #000;
@@ -19,32 +20,6 @@ text-align: left !important;
 .section-subtitle{
   color: #000 !important;
 }
-/* Fixed Background with zoom effect */
-.fixed-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://hummerglobalautomobiles.com/img/service1.jpg') center/cover no-repeat;
-  z-index: -2;
-  transform: scale(1.1);
-  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.about-section.scrolled .fixed-background {
-  transform: scale(1);
-}
-
-.background-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 252, 252, 0.7) 100%)!important;
-}
-
 .container {
   max-width: 1300px;
   margin: 0 auto;
@@ -56,7 +31,7 @@ text-align: left !important;
 
 /* Feature Cards Grid - Now placed above content */
 .feature-cards-container {
-  margin-bottom: 60px;
+  margin: auto;
   position: relative;
   z-index: 2;
   width: 100%;
@@ -120,7 +95,7 @@ text-align: left !important;
 .card-icon {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, rgba(139, 0, 0, 0.2) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(248, 248, 248, 0.836) 0%, transparent 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -290,7 +265,7 @@ text-align: left !important;
 
 .stat-icon {
   font-size: 1.5rem;
-  color: #8B0000;
+  color: #ffffff !important;
 }
 
 .stat-content {

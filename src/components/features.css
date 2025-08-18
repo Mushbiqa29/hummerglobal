@@ -2,7 +2,7 @@
 
 /* tweak these variables if you want the frame in red/orange instead of blue */
 :root {
-  --bg: #0a0a0a;
+ 
   --frame-a: #0EA5FF; /* main neon stroke (blue by default) */
   --frame-b: #7DE5FF; /* inner highlight */
   --accent-a: #8B0000; /* your original theme accent */
@@ -15,7 +15,7 @@
 /* ---------- base ---------- */
 * { box-sizing: border-box; }
 .two-wheeler-services {
-  background: var(--bg);
+  background-color: transparent !important;
   color: #000000;
   font-family: "Poppins", sans-serif;
   padding: 56px 20px;
@@ -34,6 +34,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 28px;
   align-items: center;
+margin-top: -10%;
 }
 
 /* ---------- LEFT VISUAL ---------- */
